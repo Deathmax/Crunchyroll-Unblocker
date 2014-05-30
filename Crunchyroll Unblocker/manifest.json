@@ -4,15 +4,16 @@
 	"name": "Crunchyroll Unblocker",
 	"description": "Makes Crunchyroll believe you are from the US.",
 	"version": "0.7",
-	"options_page": "options.html",
 
 	"permissions": [
+		"background",
 		"cookies",
 		"tabs",
 		"proxy",
-		"storage",
-		"http://crunchyroll.com/"
-		
+		"http://crunchyroll.com/",
+		"http://www.google.com/",
+		"https://*/*",
+		"http://*/*"
 	],
 	
 	"browser_action": {
@@ -27,6 +28,6 @@
 	
 	"background": {
 		"scripts": ["background.js"],
-		"persistent": true
+		"persistent": false
 	}
 }
