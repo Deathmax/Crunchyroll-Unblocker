@@ -4,6 +4,7 @@ function setCookie () {
     console.log('we have ' + region);
     switch (region) {
       case 'us':
+      case 'fr':
       {
         var xhr = new XMLHttpRequest();
         xhr.timeout = 5000;
@@ -16,7 +17,21 @@ function setCookie () {
             chrome.cookies.set({url: "http://.crunchyroll.com/", name: "sess_id", value: xhr.responseText});
           }
         }
-        xhr.open("GET", "http://www.crunblocker.com/sess_id.php", true);
+        var sessIdScript = "";
+        switch (region) {
+          case 'us':
+          {
+            sessIdScript = "http://www.crunblocker.com/sess_id.php";
+            break;
+          }
+          case 'fr':
+          {
+            sessIdScript = "https://fr.deathsnacks.com/crunchycookie.php";
+            break;
+          }
+        }
+        console.log('we using ' + sessIdScript);
+        xhr.open("GET", sessIdScript, true);
         xhr.send(null);
         break;
       }
